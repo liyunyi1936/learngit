@@ -22,9 +22,9 @@
  * \param[in]      :float    *arr£ºsort array in reverse order
  * \param[in]      :uint32_t size£ºnumber of arrays
  * \param[in]      :uint32_t target£ºvalue need to find 
- * \param[out]     :uint32_t subscript: the value to the left closest to the target value
+ * \param[out]     :uint32_t num: the value to the left closest to the target value
  *
- * \retval         :uint8_t  search_status: 0 means get NULL array
+ * \retval         :uint8_t  status: 0 means get NULL array
                                             1 means get VALID array
  */
 

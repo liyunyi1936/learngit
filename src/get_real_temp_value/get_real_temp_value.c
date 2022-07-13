@@ -8,7 +8,7 @@
  * \brief          :get_real_temp_value
  * \detail         :Use a linear relationship to find the real temperature value 
  *                  
- * \param[in]      :uint16_t num :the subscript to the left closest to the target value
+ * \param[in]      :uint16_t subs :the subscript to the left closest to the target value
  * \param[in]      :uint32_t value    : resistance  value
  * \param[in]      :float *resist_arr  : put the resistance array
  * \param[out]     :float *real_Temp   : the pointer of the temperature value finally found
