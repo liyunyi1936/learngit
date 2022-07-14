@@ -26,6 +26,7 @@ STM32F427 VIT6
 ##功能概述
 ###- ADC采样转换得到两种NTC的阻值，利用二分查找法获取不同阻值对应的温度值
 ###- IO口对应说明
+
 PC4   ---  ADC1 IN14   
 
 PD4   ---  ADC_MUX _A0 （GPIO _OUTPUT）

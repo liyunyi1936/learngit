@@ -40,8 +40,8 @@ static uint8_t get_real_temp_value(uint16_t subs, uint32_t value, float *resist_
  * \param[in]      :uint32_t target_value: resistance values obtained by ADC sampling conversion
  * \param[out]     :float *temp:  pointed to real temperature result
  *
- * \retval         :uint8_t  status: 0 means 
-                                     1 means 
+ * \retval         :uint8_t  status: 0 means error execution or function not executed
+                                     1 means The function has completed execution
 */
     
        
