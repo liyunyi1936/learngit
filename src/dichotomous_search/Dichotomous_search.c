@@ -10,10 +10,6 @@
 #include "Dichotomous_search.h"
 #include "stdint.h"
 #include "stdio.h"
-#include "ntc_table.c"
-
-
-
 
 /**
  * \brief          :dichotomous_search
@@ -29,11 +25,11 @@
  */
 
 uint8_t dichotomous_search(float *arr, uint32_t size, uint32_t target, uint32_t *num) 
-{	
+{
     
     uint32_t left  	   = 0;
-	uint32_t right     = size - 1;
-	uint32_t mid       = 0;
+    uint32_t right     = size - 1;
+    uint32_t mid       = 0;
     uint8_t  status = 1;
 
     if(arr == NULL) {                //judge the array is NULL or not

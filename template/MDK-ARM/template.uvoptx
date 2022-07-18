@@ -616,8 +616,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\src\dichotomous_search\Dichotomous_search.c</PathWithFileName>
-      <FilenameWithoutPath>Dichotomous_search.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\src\get_real_temp_value\get_real_temp_value.c</PathWithFileName>
+      <FilenameWithoutPath>get_real_temp_value.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -628,8 +628,20 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\src\get_real_temp_value\get_real_temp_value.c</PathWithFileName>
-      <FilenameWithoutPath>get_real_temp_value.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\src\dichotomous_search\Dichotomous_search.c</PathWithFileName>
+      <FilenameWithoutPath>Dichotomous_search.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>5</GroupNumber>
+      <FileNumber>29</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\src\ntc_table\ntc_table.c</PathWithFileName>
+      <FilenameWithoutPath>ntc_table.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

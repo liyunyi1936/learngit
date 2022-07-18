@@ -102,44 +102,45 @@ int main(void)
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
     HAL_ADC_Start_DMA(&hadc1, (uint32_t *)ADC_Value, sizeof(ADC_Value) / 2);
-	HAL_GPIO_WritePin(GPIOD, ADC_MUX_EN_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(GPIOD, ADC_MUX_EN_Pin, GPIO_PIN_SET);
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1)
-  {
-      HAL_Delay(50);
+while (1)
+{
+    HAL_Delay(50);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-      memcpy(ADC_Value_pre, ADC_Value, sizeof(uint16_t) * 100);
+    memcpy(ADC_Value_pre, ADC_Value, sizeof(uint16_t) * 100);
         
-		for(t = 0; t < 100; t++) {
+    for(t = 0; t < 100; t++) {
 
-			for(j = 0; j < 100 - t; j++) {
-				
-				if(ADC_Value_pre[j] > ADC_Value_pre[j+1]) {         /* average by removing the maximum and minimum values */
-				
-					max_val = ADC_Value_pre[j];
-					ADC_Value_pre[j] = 	ADC_Value_pre[j+1]; 
-					ADC_Value_pre[j+1] = max_val;
-					
-				}
-			}
-			
-		}
-		
-		for(t = 2; t < 98; t++) {
-			
-			temp_val += ADC_Value_pre[t];
-		}
-		
-		temp_val /= 96.0f;
+        for(j = 0; j < 100 - t; j++) {
 
-	mux_get_ADC_channel_data(&channel);
-  }
+            if(ADC_Value_pre[j] > ADC_Value_pre[j+1]) {         /* average by removing the maximum and minimum values */
+
+            max_val = ADC_Value_pre[j];
+            ADC_Value_pre[j] = 	ADC_Value_pre[j+1]; 
+            ADC_Value_pre[j+1] = max_val;
+
+            }
+        }
+
+    }
+
+    for(t = 2; t < 98; t++) {
+
+        temp_val += ADC_Value_pre[t];
+        
+    }
+
+    temp_val /= 96.0f;
+
+    mux_get_ADC_channel_data(&channel);
+}
   /* USER CODE END 3 */
 }
 
