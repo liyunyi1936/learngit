@@ -26,7 +26,9 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "adc_data.h"
-#include "string.h"
+#include "median_filter.h"
+#include <string.h>
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -108,39 +110,40 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-while (1)
-{
-    HAL_Delay(50);
-    /* USER CODE END WHILE */
+    while (1)
+    {
+        HAL_Delay(50);
+        /* USER CODE END WHILE */
 
-    /* USER CODE BEGIN 3 */
-    memcpy(ADC_Value_pre, ADC_Value, sizeof(uint16_t) * 100);
-        
-    for(t = 0; t < 100; t++) {
+        /* USER CODE BEGIN 3 */
+        memcpy(ADC_Value_pre, ADC_Value, sizeof(uint16_t) * 100);
+            
+        for(t = 0; t < 100; t++) {
 
-        for(j = 0; j < 100 - t; j++) {
+            for(j = 0; j < 100 - t; j++) {
 
-            if(ADC_Value_pre[j] > ADC_Value_pre[j+1]) {         /* average by removing the maximum and minimum values */
+                if(ADC_Value_pre[j] > ADC_Value_pre[j+1]) {         /* average by removing the maximum and minimum values */
 
-            max_val = ADC_Value_pre[j];
-            ADC_Value_pre[j] = 	ADC_Value_pre[j+1]; 
-            ADC_Value_pre[j+1] = max_val;
+                max_val = ADC_Value_pre[j];
+                ADC_Value_pre[j] = ADC_Value_pre[j+1]; 
+                ADC_Value_pre[j+1] = max_val;
 
+                }
             }
+
         }
 
+        /* calculate the average value*/
+        for(t = 2; t < 98; t++) {
+
+            temp_val += ADC_Value_pre[t];
+
+        }
+
+        temp_val /= 96.0f;
+
+        mux_get_ADC_channel_data(&channel);
     }
-
-    for(t = 2; t < 98; t++) {
-
-        temp_val += ADC_Value_pre[t];
-        
-    }
-
-    temp_val /= 96.0f;
-
-    mux_get_ADC_channel_data(&channel);
-}
   /* USER CODE END 3 */
 }
 

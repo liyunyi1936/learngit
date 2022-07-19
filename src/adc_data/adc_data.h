@@ -5,7 +5,7 @@
 
 void mux_get_ADC_channel_data(uint8_t *chan);
 void  mux_channel_select(uint16_t chan);
-
+uint32_t resist_val_cal(uint16_t resist_tag);
 
 #define ADC_MUX_A0_SET()                 HAL_GPIO_WritePin(ADC_MUX_A0_GPIO_Port, ADC_MUX_A0_Pin, GPIO_PIN_SET)
 #define ADC_MUX_A0_RESET()               HAL_GPIO_WritePin(ADC_MUX_A0_GPIO_Port, ADC_MUX_A0_Pin, GPIO_PIN_RESET)
@@ -13,13 +13,11 @@ void  mux_channel_select(uint16_t chan);
 #define ADC_MUX_A1_RESET()               HAL_GPIO_WritePin(ADC_MUX_A1_GPIO_Port, ADC_MUX_A1_Pin, GPIO_PIN_RESET)
 #define ADC_MUX_A2_SET()                 HAL_GPIO_WritePin(ADC_MUX_A2_GPIO_Port, ADC_MUX_A2_Pin, GPIO_PIN_SET)
 #define ADC_MUX_A2_RESET()               HAL_GPIO_WritePin(ADC_MUX_A2_GPIO_Port, ADC_MUX_A2_Pin, GPIO_PIN_RESET)
-	
+
 #define ADC_MUX_A0_READ()                HAL_GPIO_ReadPin(ADC_MUX_A0_GPIO_Port, ADC_MUX_A0_Pin)
 #define ADC_MUX_A1_READ()                HAL_GPIO_ReadPin(ADC_MUX_A1_GPIO_Port, ADC_MUX_A1_Pin)
-#define ADC_MUX_A2_READ()                HAL_GPIO_ReadPin(ADC_MUX_A2_GPIO_Port, ADC_MUX_A2_Pin)				
-	
-	
-	
+#define ADC_MUX_A2_READ()                HAL_GPIO_ReadPin(ADC_MUX_A2_GPIO_Port, ADC_MUX_A2_Pin)
+
 typedef enum _mux_channel
 {
     MUX_CHANNEL_1 = 0,
@@ -32,7 +30,6 @@ typedef enum _mux_channel
     MUX_CHANNEL_8
 
 }mux_channel_t;
-
 
 
 

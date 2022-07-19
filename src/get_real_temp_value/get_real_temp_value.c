@@ -1,4 +1,3 @@
-#include "stdint.h"
 #include "Dichotomous_search.h"
 #include "get_real_temp_value.h"
 
@@ -16,16 +15,16 @@
  * \retval         :uint8_t  status: 0 means ERROR(searching array is bigger than target array)
                                      1 means RIGHT operation
  */
-static uint8_t get_real_temp_value(uint16_t subs, uint32_t value, float *resist_arr, float *real_Temp) 
+static uint8_t get_real_temp_value(uint16_t subs, uint32_t resist_value, float *resist_arr, float *real_Temp) 
 {
     
-    if (subs >= 4400) {     /* from -70¡æ to 150¡æ, get a value per 0.05, totally 4400 temperature values */   
+    if (subs >= 4401) {     /* from -70¡æ to 150¡æ, get a value per 0.05, totally 4401 temperature values */   
         
         return 0;            /*avoid entering an array larger than the range*/ 
         
     }
     
-    *real_Temp = -70 + subs * 0.05f + ((resist_arr[subs] - value) / (resist_arr[subs] - resist_arr[subs + 1]) * 0.05f);  //
+    *real_Temp = -70 + subs * 0.05f + ((resist_arr[subs] - resist_value) / (resist_arr[subs] - resist_arr[subs + 1]) * 0.05f);  //
     
     return 1;
     
@@ -45,16 +44,16 @@ static uint8_t get_real_temp_value(uint16_t subs, uint32_t value, float *resist_
 */
     
        
-uint8_t search_and_get_value(float *arr, uint16_t len, uint32_t target_value, float *temp) 
+uint8_t search_and_get_value(float *arr, uint16_t len, uint32_t resist_value, float *temp) 
 {
     uint32_t num = 0; 
     uint8_t status = 0;
        
-    status = dichotomous_search(arr, len, target_value, &num);
+    status = dichotomous_search(arr, len, resist_value, &num);
     
     if (status == 1) {
         
-        status = get_real_temp_value(num, target_value, arr, temp);
+        status = get_real_temp_value(num, resist_value, arr, temp);
     }
 
     
