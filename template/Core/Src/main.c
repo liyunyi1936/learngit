@@ -26,19 +26,14 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "adc_data.h"
-#include "string.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
+
+
 extern uint8_t channel; 
-float temp_val = 0;
-
-uint16_t ADC_Value[100];
-uint16_t ADC_Value_pre[100];
-uint8_t t;
-uint8_t j;
-
 
 /* USER CODE END PTD */
 
@@ -75,9 +70,7 @@ void SystemClock_Config(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-    
-    uint16_t max_val = 0;
-    
+
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -101,45 +94,21 @@ int main(void)
   MX_DMA_Init();
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
-    HAL_ADC_Start_DMA(&hadc1, (uint32_t *)ADC_Value, sizeof(ADC_Value) / 2);
-	HAL_GPIO_WritePin(GPIOD, ADC_MUX_EN_Pin, GPIO_PIN_SET);
+
+    HAL_GPIO_WritePin(GPIOD, ADC_MUX_EN_Pin, GPIO_PIN_SET);
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1)
-  {
-      HAL_Delay(50);
-    /* USER CODE END WHILE */
+    while (1)
+    {
+        HAL_Delay(50);
+        /* USER CODE END WHILE */
 
-    /* USER CODE BEGIN 3 */
-      memcpy(ADC_Value_pre, ADC_Value, sizeof(uint16_t) * 100);
-        
-		for(t = 0; t < 100; t++) {
-
-			for(j = 0; j < 100 - t; j++) {
-				
-				if(ADC_Value_pre[j] > ADC_Value_pre[j+1]) {         /* average by removing the maximum and minimum values */
-				
-					max_val = ADC_Value_pre[j];
-					ADC_Value_pre[j] = 	ADC_Value_pre[j+1]; 
-					ADC_Value_pre[j+1] = max_val;
-					
-				}
-			}
-			
-		}
-		
-		for(t = 2; t < 98; t++) {
-			
-			temp_val += ADC_Value_pre[t];
-		}
-		
-		temp_val /= 96.0f;
-
-	mux_get_ADC_channel_data(&channel);
-  }
+        /* USER CODE BEGIN 3 */
+        mux_get_ADC_channel_data(&channel);
+    }
   /* USER CODE END 3 */
 }
 

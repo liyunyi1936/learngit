@@ -2,18 +2,16 @@
  * \file       :Dichotomous_search.c
  * \brief      :binary search 
  * \author     :liyunyi
- * \date       :2022.7.12
- * \version    :v2.0.0
+ * \date       :2022.7.18
+ * \version    :v2.0.1
  * \copyright  :
  */
 
 #include "Dichotomous_search.h"
-#include "stdint.h"
-#include "stdio.h"
-#include "ntc_table.c"
+#include <stdint.h>
 
-
-
+#define NULL 0
+   /* null pointer constant. */
 
 /**
  * \brief          :dichotomous_search
@@ -29,11 +27,11 @@
  */
 
 uint8_t dichotomous_search(float *arr, uint32_t size, uint32_t target, uint32_t *num) 
-{	
+{
     
-    uint32_t left  	   = 0;
-	uint32_t right     = size - 1;
-	uint32_t mid       = 0;
+    uint32_t left      = 0;
+    uint32_t right     = size - 1;
+    uint32_t mid       = 0;
     uint8_t  status = 1;
 
     if(arr == NULL) {                //judge the array is NULL or not
@@ -50,7 +48,7 @@ uint8_t dichotomous_search(float *arr, uint32_t size, uint32_t target, uint32_t 
         
         }else if( target < arr[mid]) {
     
-            left = mid + 1;	
+            left = mid + 1;
         
         }else if(target == arr[mid]) {
         

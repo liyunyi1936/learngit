@@ -132,11 +132,6 @@
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
-          <Key>DLGUARM</Key>
-          <Name>(</Name>
-        </SetRegEntry>
-        <SetRegEntry>
-          <Number>0</Number>
           <Key>JL2CM3</Key>
           <Name>-U59412737 -O78 -S2 -ZTIFSpeedSel5000 -A0 -C0 -JU1 -JI127.0.0.1 -JP0 -RST0 -N00("ARM CoreSight SW-DP") -D00(2BA01477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -TB1 -TFE0 -FO15 -FD20000000 -FC1000 -FN1 -FF0STM32F4xx_2048.FLM -FS08000000 -FL0200000 -FP0($$Device:STM32F427VITx$CMSIS\Flash\STM32F4xx_2048.FLM)</Name>
         </SetRegEntry>
@@ -156,37 +151,37 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>j_real_Temp_value,0x0A</ItemText>
+          <ItemText>resistance_value,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>g_real_Temp_value</ItemText>
+          <ItemText>resist,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>resistance_value,0x0A</ItemText>
+          <ItemText>j2_form_value_num,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>3</count>
           <WinNumber>1</WinNumber>
-          <ItemText>resist,0x0A</ItemText>
+          <ItemText>\\template\../../src/ntc_table/ntc_table.c\g2_form_value_num,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>4</count>
           <WinNumber>1</WinNumber>
-          <ItemText>num</ItemText>
+          <ItemText>channel</ItemText>
         </Ww>
         <Ww>
           <count>5</count>
           <WinNumber>1</WinNumber>
-          <ItemText>watch_left</ItemText>
+          <ItemText>j_real_Temp_value</ItemText>
         </Ww>
         <Ww>
           <count>6</count>
           <WinNumber>1</WinNumber>
-          <ItemText>ADC_Value_pre,0x0A</ItemText>
+          <ItemText>g_real_Temp_value</ItemText>
         </Ww>
         <Ww>
           <count>7</count>
@@ -196,12 +191,17 @@
         <Ww>
           <count>8</count>
           <WinNumber>1</WinNumber>
-          <ItemText>watch</ItemText>
+          <ItemText>MAX_MIN_RANGE,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>9</count>
           <WinNumber>1</WinNumber>
-          <ItemText>num,0x0A</ItemText>
+          <ItemText>temp_val</ItemText>
+        </Ww>
+        <Ww>
+          <count>10</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>pre_adc_val</ItemText>
         </Ww>
       </WatchWindow1>
       <MemoryWindow1>
@@ -616,8 +616,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\src\dichotomous_search\Dichotomous_search.c</PathWithFileName>
-      <FilenameWithoutPath>Dichotomous_search.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\src\get_real_temp_value\get_real_temp_value.c</PathWithFileName>
+      <FilenameWithoutPath>get_real_temp_value.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -628,8 +628,32 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\src\get_real_temp_value\get_real_temp_value.c</PathWithFileName>
-      <FilenameWithoutPath>get_real_temp_value.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\src\dichotomous_search\Dichotomous_search.c</PathWithFileName>
+      <FilenameWithoutPath>Dichotomous_search.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>5</GroupNumber>
+      <FileNumber>29</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\src\median_filter\median_filter.c</PathWithFileName>
+      <FilenameWithoutPath>median_filter.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>5</GroupNumber>
+      <FileNumber>30</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\src\ntc_table\ntc_table.c</PathWithFileName>
+      <FilenameWithoutPath>ntc_table.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
