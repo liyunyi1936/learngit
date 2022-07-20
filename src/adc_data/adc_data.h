@@ -4,8 +4,10 @@
 #include "adc.h"
 
 void mux_get_ADC_channel_data(uint8_t *chan);
+float  process_ADC_data_with_filter(uint16_t *adc_val_array);
 void  mux_channel_select(uint16_t chan);
 uint32_t resist_val_cal(uint16_t resist_tag);
+
 
 #define ADC_MUX_A0_SET()                 HAL_GPIO_WritePin(ADC_MUX_A0_GPIO_Port, ADC_MUX_A0_Pin, GPIO_PIN_SET)
 #define ADC_MUX_A0_RESET()               HAL_GPIO_WritePin(ADC_MUX_A0_GPIO_Port, ADC_MUX_A0_Pin, GPIO_PIN_RESET)

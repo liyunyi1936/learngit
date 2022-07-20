@@ -19,6 +19,7 @@ STM32F427 VIT6
   * [dichotomous_search]()   
   * [get_ real _temp _value]() 
   * [ntc_table]() 
+  * [median_filter]() 
 * [template]()
 * [.gitignore]()
 * [readme]()
@@ -69,6 +70,7 @@ PD7   ---  ADC_MUX _EN
 ##### 1.布局上：
 
  - 新建 ``ntc_table`` 文件夹存放.c.h文件。
+ - 新增 ``median_filter ``文件夹存放中值滤波文件。
 
 ##### 2.书写规范上：
 
@@ -80,16 +82,18 @@ PD7   ---  ADC_MUX _EN
 
  +  **DRY原则**：  
  
-<1> 在 adc_ data.c 文件中自定义了 ``resist_ val_ cal `` 函数, 调用此函数来计算各通道的阻值，减少重复计算。（ps：只有6个通道有相关计算阻值的公式）。
+	* 在 adc_ data.c 文件中自定义了 ``resist_ val_ cal `` 函数, 调用此函数来计算各通道的阻值，减少重复计算。（ps：只有6个通道有相关计算阻值的公式）。
 
-<2> 在 adc_ data.c 文件中 ``mux_get_ADC_channel_data`` 函数中，第一个switch计算各通道阻值，第二个switch是用作切换通道的，将切换通道的内容放到计算阻值后面，之后break，能实现正常运行，减少重复写switch结构。
+	* 在 adc_ data.c 文件中 ``mux_get_ADC_channel_data`` 函数中，第一个switch计算各通道阻值，第二个switch是用作切换通道的，将切换通道的内容放到计算阻值后面，之后break，能实现正常运行，减少重复写switch结构。
+	
+	*  尝试用for循环判断（* chan）少于 ``MUX_CHANNEL_8`` ,然后（* chan）++自加,直至 ``* chan = MUX_CHANNEL_8`` 时让 ``*chan = MUX_CHANNEL_1`` ,debug调试时发现会chan能够正常遍历，但是计算阻值没有更新，由于进入for循环后的执行内容仅用于切换通道且没有加入adc值获取更新以及后续的阻值计算，这些内容不在同一个文件（前一个版本是），因此综合考虑后，上述修改比较便捷有效。
 
-（ps：尝试用while循环判断（* chan）少于 ``MUX_CHANNEL_8`` ,然后（* chan）++自加,直至 ``* chan = MUX_CHANNEL_8`` 时让 ``*chan = MUX_CHANNEL_1`` ,debug调试时发现会chan从0跳到7，阻值和温度数据没有更新，且代码运行之后在返0（通道1）的判断处加断点，能够实现chan枚举01234567，但是计算阻值没有更新）
+
+ +  **修复bug**： 在 adc_ data.c 文件中 search_ and_ get_ value 函数中的4400（此数值有误，后确定为4401）用 ``j2_form_value_num``替换，此变量定义在 `` ntc_table.c `` 的    ``uint32_t  j2_form_value_num = ARRAY_NUM(j2_form_value);`` 
 
 
- + **修复bug**： 在 adc_ data.c 文件中 search_ and_ get_ value 函数中的4400（此数值有误，后确定为4401）用 ``j2_form_value_num``替换，此变量定义在 `` ntc_table.c `` 的    ``uint32_t  j2_form_value_num = ARRAY_NUM(j2_form_value);`` 
+ +  **新增**：在 ``adc_data.c `` 把adc获取的值进行滤波后在进入各个通道处理计算
 
- +  **中值滤波** ：？
- 
+
 
 ​
