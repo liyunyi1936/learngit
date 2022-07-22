@@ -95,8 +95,6 @@ int main(void)
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
 
-    HAL_GPIO_WritePin(GPIOD, ADC_MUX_EN_Pin, GPIO_PIN_SET);
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -104,10 +102,11 @@ int main(void)
     while (1)
     {
         HAL_Delay(50);
+        mux_get_ADC_channel_data(&channel);
         /* USER CODE END WHILE */
 
         /* USER CODE BEGIN 3 */
-        mux_get_ADC_channel_data(&channel);
+
     }
   /* USER CODE END 3 */
 }
