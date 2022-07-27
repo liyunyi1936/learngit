@@ -1,33 +1,19 @@
 #include "Dichotomous_search.h"
 #include "get_real_temp_value.h"
 
-#define ARRAY_NUM(a) (sizeof(a)/sizeof(a[0]))
-    
 /**
- * \brief          :get_real_temp_value
- * \detail         :Use a linear relationship to find the real temperature value 
- *                  
- * \param[in]      :uint16_t subs :the subscript to the left closest to the target value
- * \param[in]      :uint32_t value    : resistance  value
- * \param[in]      :float *resist_arr  : put the resistance array
- * \param[out]     :float *real_Temp   : the pointer of the temperature value finally found
+ * \brief          :get_linear_value
+ * \detail         :Given two coordinates, find the y value of the third point 
  *
- * \retval         :uint8_t  status: 0 means ERROR(searching array is bigger than target array)
-                                     1 means RIGHT operation
- */
-static uint8_t get_real_temp_value(uint16_t subs, uint32_t resist_value, float *resist_arr, float *real_Temp) 
+ * \retval         :output_y
+*/
+    
+uint8_t get_linear_value(float x1, float y1, float x2, float y2, float intput_x,float *output_y)
 {
+
+    *output_y = ((x1 - intput_x) / (x1 - x2) * (y1 - y2)) + y1;
     
-    if (subs >= 4401) {     /* from -70¡æ to 150¡æ, get a value per 0.05, totally 4401 temperature values */   
-        
-        return 0;            /*avoid entering an array larger than the range*/ 
-        
-    }
-    
-    *real_Temp = -70 + subs * 0.05f + ((resist_arr[subs] - resist_value) / (resist_arr[subs] - resist_arr[subs + 1]) * 0.05f);  //
-    
-    return 1;
-    
+    return *output_y;
 }
 
 
@@ -36,28 +22,51 @@ static uint8_t get_real_temp_value(uint16_t subs, uint32_t resist_value, float *
  * \detail         :use Dichotomous search method to find the closest array subscript and calculate the temperature corresponding to the NTC resistance value 
  * \param[in]      :float *arr:   resistance array
  * \param[in]      :uint16_t len: the length of resistance array
- * \param[in]      :uint32_t target_value: resistance values obtained by ADC sampling conversion
- * \param[out]     :float *temp:  pointed to real temperature result
+ * \param[in]      :uint32_t resist_value: resistance values obtained by ADC sampling conversion
+ * \param[in]      :float init_temp: the minimum of a finite range of temperature values
+* \param[in]       :float per_range: every two temperature intervals
+ * \param[out]     :float *temp:    pointed to real temperature result
  *
  * \retval         :uint8_t  status: 0 means error execution or function not executed
                                      1 means The function has completed execution
+                                     2 means temperature data over the normal range 
 */
     
-       
-uint8_t search_and_get_value(float *arr, uint16_t len, uint32_t resist_value, float *temp) 
+uint8_t search_and_get_value(float *resist_arr, uint16_t len, uint32_t resist_value, float init_temp, float per_range, float *temp) 
 {
     uint32_t num = 0; 
     uint8_t status = 0;
+    float temp1,temp2;
+    float min_temp, max_temp;
        
-    status = dichotomous_search(arr, len, resist_value, &num);
-    
-    if (status == 1) {
+    status = dichotomous_search(resist_arr, len, resist_value, &num);
+    min_temp = init_temp;
+    max_temp = init_temp + (len - 1) * per_range;
+    if(num > (len -1)) {
         
-        status = get_real_temp_value(num, resist_value, arr, temp);
+        *temp = max_temp;
+        status = 2;
+
+    }else if(num <= 0) {
+        
+        *temp = min_temp;
+        status = 2;
+        
     }
 
-    
+    if (status == 1) {
+         
+        temp1 = init_temp + num * per_range;                /* from -70¡æ to 150¡æ, get a value per 0.05, totally 4401 temperature values */   
+        temp2 = init_temp + (num + 1) * per_range ;
+        get_linear_value(resist_arr[num], temp1, resist_arr[num+1], temp2, resist_value, temp);
+        
+    }
+
     return status;
-    
-   
+
 }
+
+
+
+
+

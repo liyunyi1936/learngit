@@ -92,8 +92,16 @@ PD7   ---  ADC_MUX _EN
  +  **修复bug**： 在 adc_ data.c 文件中 search_ and_ get_ value 函数中的4400（此数值有误，后确定为4401）用 ``j2_form_value_num``替换，此变量定义在 `` ntc_table.c `` 的    ``uint32_t  j2_form_value_num = ARRAY_NUM(j2_form_value);`` 
 
 
- +  **新增**：在 ``adc_data.c `` 把adc获取的值进行滤波后在进入各个通道处理计算
+ +  **新增**：在 ``adc_data.c `` 把adc获取的值进行滤波后在进入各个通道处理计算。
 
 
 
-​
+## V2.1.0 版本内容更新
+ +  **新增**：
+
+	*  ``dichotomous_search.c `` 新增判断进入函数的target 越界，返回状态：-2。
+
+	* 计算最终的温度值的函数``get_real_temp_value`` ---> ``get_linear_value``，增强其通用性（符合线性关系可代入计算）。
+	* 
+	* search_and_get_value的函数中，增加了对温度值越界的判断，且以大小边界值作为输出，返回状态：2。
+ ​

@@ -4,6 +4,8 @@
 #include "ntc_table.h"
 #include "median_filter.h"
 
+#define INIT_TEMP                -70
+#define PER_RANGE                0.05
 
 #define FIND_MAX                1
 #define FIND_MIN                0
@@ -46,22 +48,22 @@ void mux_get_ADC_channel_data(uint8_t *chan)
 {
     HAL_ADC_Start_DMA(&hadc1, (uint32_t *)ADC_Value, ADC_NUM);             /* enable ADC */
     
-    pre_adc_val = process_ADC_data_with_filter(ADC_Value);          /* filter */
+    pre_adc_val = process_ADC_data_with_filter(ADC_Value);                   /* filter */
     adc_vol  = (pre_adc_val* ADC_VREF * RATE_K) / ADC_RANGE;              /* the value of voltage */
 
     switch(*chan) {
 
         case MUX_CHANNEL_1:
             resist[0] = resist_val_cal(R67);
-            search_and_get_value(j2_form_value, j2_form_value_num, resist[0], &j_real_Temp_value[0]);
-            search_and_get_value(g2_form_value, g2_form_value_num, resist[0], &g_real_Temp_value[0]);
+            search_and_get_value(j2_form_value, j2_form_value_num, resist[0], INIT_TEMP, PER_RANGE, &j_real_Temp_value[0]); 
+            search_and_get_value(g2_form_value, g2_form_value_num, resist[0], INIT_TEMP, PER_RANGE, &g_real_Temp_value[0]);
             *chan = MUX_CHANNEL_2; 
             break;
 
         case MUX_CHANNEL_2:
             resist[1] = resist_val_cal(R66);
-            search_and_get_value(j2_form_value, j2_form_value_num, resist[1], &j_real_Temp_value[1]);
-            search_and_get_value(g2_form_value, g2_form_value_num, resist[1], &g_real_Temp_value[1]);
+            search_and_get_value(j2_form_value, j2_form_value_num, resist[1], INIT_TEMP, PER_RANGE, &j_real_Temp_value[1]);
+            search_and_get_value(g2_form_value, g2_form_value_num, resist[1], INIT_TEMP, PER_RANGE, &g_real_Temp_value[1]);
             *chan = MUX_CHANNEL_3; 
             break;
 

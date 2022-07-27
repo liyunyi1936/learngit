@@ -103,9 +103,9 @@ int main(void)
     {
         HAL_Delay(50);
         mux_get_ADC_channel_data(&channel);
-        /* USER CODE END WHILE */
+    /* USER CODE END WHILE */
 
-        /* USER CODE BEGIN 3 */
+    /* USER CODE BEGIN 3 */
 
     }
   /* USER CODE END 3 */

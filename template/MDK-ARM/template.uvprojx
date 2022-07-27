@@ -335,7 +335,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F427xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;..\..\src\adc_data;..\..\src\dichotomous_search;..\..\src\get_real_temp_value;..\..\src\ntc_table;..\..\src\median_filter</IncludePath>
+              <IncludePath>../Core/Inc;  ../Drivers/STM32F4xx_HAL_Driver/Inc;  ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;  ../Drivers/CMSIS/Device/ST/STM32F4xx/Include;  ../Drivers/CMSIS/Include;  ..\..\src\adc_data;  ..\..\src\dichotomous_search;  ..\..\src\get_real_temp_value;  ..\..\src\ntc_table;  ..\..\src\median_filter</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
