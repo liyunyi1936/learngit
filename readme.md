@@ -102,6 +102,6 @@ PD7   ---  ADC_MUX _EN
 	*  ``dichotomous_search.c `` 新增判断进入函数的target 越界，返回状态：-2。
 
 	* 计算最终的温度值的函数``get_real_temp_value`` ---> ``get_linear_value``，增强其通用性（符合线性关系可代入计算）。
-	* 
+
 	* search_and_get_value的函数中，增加了对温度值越界的判断，且以大小边界值作为输出，返回状态：2。
  ​
