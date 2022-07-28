@@ -47,7 +47,7 @@ uint8_t search_and_get_value(float *resist_arr, uint16_t len, uint32_t resist_va
         *temp = max_temp;
         status = 2;
 
-    }else if(num <= 0) {
+    }else if(status <= 0) {
         
         *temp = min_temp;
         status = 2;

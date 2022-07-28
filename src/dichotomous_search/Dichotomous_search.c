@@ -14,19 +14,18 @@
 
 /**
  * \brief          :dichotomous_search
- * \detail         :array rank from biggest to smallest
+ * \detail         :
  *
- * \param[in]      :float    *arr£ºsort array in reverse order
+ * \param[in]      :float(user defined) *arr£º  sort array in reverse order
  * \param[in]      :uint32_t size£ºnumber of arrays
- * \param[in]      :float target£ºvalue need to find 
+ * \param[in]      :float(user defined) target£ºvalue need to find 
  * \param[out]     :uint32_t num: the value to the left closest to the target value
  *
  * \retval         :uint8_t  status: -1 means get NULL array   
  *                                   -2  smaller than the minimun value
  *                                   1 means get VALID array
  */
-
-int8_t dichotomous_search(float *arr, uint32_t size, float target, uint32_t *num) 
+int8_t dichotomous_search(DATA_TYPE *arr, uint32_t size, DATA_TYPE target, uint32_t *num) 
 {
     
     uint32_t left      = 0;
@@ -38,31 +37,63 @@ int8_t dichotomous_search(float *arr, uint32_t size, float target, uint32_t *num
         
         return -1;
     }
-    if(target > arr[0] ) {
-    
-        return -2;
-    
-    }
-    while (left <= right) {      //avoid the array has only 1 data
+    if(arr[0] > arr[size - 1]) {      //array rank biggest ---> smallest
         
-        mid = (left + right) / 2;
-
-        if(target > arr[mid]) {
-        
-            right = mid - 1;
+        if(target > arr[0] ) {
     
-        }else if( target < arr[mid]) {
-
-            left = mid + 1;
+            return -2;
     
-        }else{
-    
-            *num = mid;
-            break;
         }
-    }
+        while (left <= right) {      //avoid the array has only 1 data
+            
+            mid = (left + right) / 2;
 
-    if (target != arr[mid]) 
+            if(target > arr[mid]) {
+            
+                right = mid - 1;
+        
+            }else if( target < arr[mid]) {
+
+                left = mid + 1;
+        
+            }else{
+        
+                *num = mid;
+                break;
+            }
+        }
+        
+    }else if(arr[0] < arr[size - 1]) {   //array rank smallest ---> biggest
+        
+        if(target < arr[0] ) {
+    
+            return -2;
+    
+        }
+        while (left <= right) {             //avoid the array has only 1 data
+            
+            mid = (left + right) / 2;
+
+            if(target < arr[mid]) {
+            
+                right = mid - 1;
+        
+            }else if( target > arr[mid]) {
+
+                left = mid + 1;
+        
+            }else{
+        
+                *num = mid;
+                break;
+            }
+        }
+        
+    
+    }
+    
+
+    if (target != arr[mid])         //return left 
     {
         *num = left;
     }
