@@ -17,6 +17,32 @@ uint8_t get_linear_value(float x1, float y1, float x2, float y2, float intput_x,
 }
 
 
+static int8_t float_compare_func(void* m1, void* m2)  
+{
+    int8_t ret = 0;
+    float* a = m1;
+    float* b = m2;
+
+
+    if (*a == *b) {
+
+
+        ret = 0;
+    }
+    else if (*a > *b) {
+
+
+        ret = 1;
+    }
+    else {
+
+        ret = -1;
+    }
+
+    return ret;
+
+}
+
 /**
  * \brief          :search_and_get_value
  * \detail         :use Dichotomous search method to find the closest array subscript and calculate the temperature corresponding to the NTC resistance value 
@@ -65,6 +91,9 @@ uint8_t search_and_get_value(float *resist_arr, uint16_t len, uint32_t resist_va
     return status;
 
 }
+
+
+
 
 
 

@@ -14,15 +14,17 @@
 
 /**
  * \brief          :dichotomous_search
- * \detail         :array rank from biggest to smallest
+ * \detail         :
  *
- * \param[in]      :float    *arr£ºsort array in reverse order
- * \param[in]      :uint32_t size£ºnumber of arrays
- * \param[in]      :float target£ºvalue need to find 
- * \param[out]     :uint32_t num: the value to the left closest to the target value
+ * \param[in]      :float    *arr£º          sort array 
+ * \param[in]      :uint32_t data_type_len£º number of data
+ * \param[in]      :uint32_t data_len£º      the length of the input array
+ * \param[in]      :void      *target£º      pointed to the target value
+ * \param[in]      :int8_t(*compare_func)(void *member_1, void *member_2)  :make sure the order of the array
+ * \param[out]     :uint32_t *num:           pointed to the index
  *
  * \retval         :uint8_t  status: -1 means get NULL array   
- *                                   -2  smaller than the minimun value
+ *                                   -2 means The target value is out of bounds
  *                                   1 means get VALID array
  */
 
