@@ -1,0 +1,104 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.23.0.0
+Copyright (C) 2017 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: 1234 dgbuaa, 1234, LIC=585FJ-UGHN7-MMR9I-TVB0W-N20WF-HZLIP
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.23
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 4 (build 422)
+Assembler:       Armasm.exe V5.06 update 4 (build 422)
+Linker/Locator:  ArmLink.exe V5.06 update 4 (build 422)
+Library Manager: ArmAr.exe V5.06 update 4 (build 422)
+Hex Converter:   FromElf.exe V5.06 update 4 (build 422)
+CPU DLL:         SARMCM3.DLL V5.23
+Dialog DLL:      DCM.DLL V1.15.0.0
+Target DLL:      Segger\JL2CM3.dll V2.99.23.0
+Dialog DLL:      TCM.DLL V1.27.0.0
+ 
+<h2>Project:</h2>
+C:\Users\dgbuaa\Desktop\lyy\I2C_ms5611\MDK-ARM\I2C_ms5611.uvprojx
+Project File Date:  08/01/2022
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 4 (build 422)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'I2C_ms5611'
+compiling flash_onchip_parameter.c...
+..\src\flash\flash_onchip_parameter.c(45): error:  #20: identifier "heater" is undefined
+  	heater *p_heater1;
+..\src\flash\flash_onchip_parameter.c(45): error:  #20: identifier "p_heater1" is undefined
+  	heater *p_heater1;
+..\src\flash\flash_onchip_parameter.c(46): error:  #20: identifier "p_heater2" is undefined
+  	heater *p_heater2;
+..\src\flash\flash_onchip_parameter.c(47): error:  #20: identifier "pow_reboot" is undefined
+  	pow_reboot *p_reboot;
+..\src\flash\flash_onchip_parameter.c(47): error:  #20: identifier "p_reboot" is undefined
+  	pow_reboot *p_reboot;
+..\src\flash\flash_onchip_parameter.c(48): error:  #20: identifier "user_logic_data_st" is undefined
+  	user_logic_data_st *data1;
+..\src\flash\flash_onchip_parameter.c(48): error:  #20: identifier "data1" is undefined
+  	user_logic_data_st *data1;
+..\src\flash\flash_onchip_parameter.c(49): error:  #20: identifier "data2" is undefined
+  	user_logic_data_st *data2;
+..\src\flash\flash_onchip_parameter.c(51): error:  #20: identifier "gp_heater1" is undefined
+  	p_heater1 = gp_heater1;
+..\src\flash\flash_onchip_parameter.c(52): error:  #20: identifier "gp_heater2" is undefined
+  	p_heater2 = gp_heater2;
+..\src\flash\flash_onchip_parameter.c(53): error:  #20: identifier "gp_reboot" is undefined
+  	p_reboot = gp_reboot;
+..\src\flash\flash_onchip_parameter.c(60): warning:  #223-D: function "set_heater1_ctrl_channel" declared implicitly
+  	set_heater1_ctrl_channel(data->temp_ctrl1_ref);
+..\src\flash\flash_onchip_parameter.c(64): warning:  #223-D: function "set_heater2_ctrl_channel" declared implicitly
+  	set_heater2_ctrl_channel(data->temp_ctrl2_ref);
+..\src\flash\flash_onchip_parameter.c(87): error:  #20: identifier "heater" is undefined
+      heater *p_heater1;
+..\src\flash\flash_onchip_parameter.c(87): error:  #20: identifier "p_heater1" is undefined
+      heater *p_heater1;
+..\src\flash\flash_onchip_parameter.c(88): error:  #20: identifier "p_heater2" is undefined
+  	heater *p_heater2;
+..\src\flash\flash_onchip_parameter.c(89): error:  #20: identifier "user_logic_data_st" is undefined
+  	user_logic_data_st *data1;
+..\src\flash\flash_onchip_parameter.c(89): error:  #20: identifier "data1" is undefined
+  	user_logic_data_st *data1;
+..\src\flash\flash_onchip_parameter.c(90): error:  #20: identifier "data2" is undefined
+  	user_logic_data_st *data2;
+..\src\flash\flash_onchip_parameter.c(92): error:  #20: identifier "gp_heater1" is undefined
+  	p_heater1 	= gp_heater1;
+..\src\flash\flash_onchip_parameter.c(93): error:  #20: identifier "gp_heater2" is undefined
+  	p_heater2 	= gp_heater2;
+..\src\flash\flash_onchip_parameter.c(100): warning:  #223-D: function "get_heater1_ctrl_channel" declared implicitly
+  	data->temp_ctrl1_ref 		= get_heater1_ctrl_channel();
+..\src\flash\flash_onchip_parameter.c(104): warning:  #223-D: function "get_heater2_ctrl_channel" declared implicitly
+  	data->temp_ctrl2_ref 		= get_heater2_ctrl_channel();
+..\src\flash\flash_onchip_parameter.c(107): warning:  #223-D: function "get_timestamp" declared implicitly
+      data->last_build_time = get_timestamp();
+..\src\flash\flash_onchip_parameter.c(127): warning:  #223-D: function "get_timestamp" declared implicitly
+          get_build_time_from_flash(data) == get_timestamp()) {
+..\src\flash\flash_onchip_parameter.c: 6 warnings, 19 errors
+"I2C_ms5611\I2C_ms5611.axf" - 19 Error(s), 6 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.0.1.pack
+                ARM::CMSIS:CORE:5.0.1
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.0.1
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_I2C_ms5611
+  C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include
+  C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.0.1
+Target not created.
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>
