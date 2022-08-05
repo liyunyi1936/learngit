@@ -1,7 +1,8 @@
 #include "main.h"
 #include "ms5611.h"
 #include "i2c.h"
- 
+#include "math.h"
+
 uint8_t TBuff[1];
 uint8_t RBuff[3];
  
@@ -13,6 +14,7 @@ int32_t dT;
 int32_t TEMP,k,T2;
 int64_t OFF,SENS,OFF2,SENS2;
 float pressure;
+double height;
 
 uint8_t HAL_IIC_ReadMultByteFromSlave(uint8_t dev, uint8_t reg, uint8_t length, uint8_t *data)
 {
@@ -123,6 +125,42 @@ void MS5611_Calculate_Val(void)
     pressure = (float)((((double)(D1 * SENS) / 2097152) - OFF) / 32768.0);    //Temperature compensated pressure (10...1200mbar with  0.01mbar resolution)
     cTemp = (float)(TEMP / 100.0);
     fTemp = cTemp * 1.8f + 32;
+    
+    height = (double)((1.0f - pow((double)pressure / 101325.0f, 0.190295f)) * 44330.0f); // meter
 }
+
+
+void relative_height(void){
+    
+    static int num = 0;
+    static int cnt = 0;
+    double alt[cnt];
+    double ms5611SumDat, ms5611CurAlt = 0.0;
+    if(num > 100)
+    {
+        if(cnt < 5) {
+            
+            alt[cnt] = height;
+            cnt ++;
+        }else {
+            ms5611SumDat = 0.0;
+            for(int i = 0; i < 5-1; i++) {
+            
+                alt[i] = alt[i+1];
+                ms5611SumDat += alt[i];
+                
+            }
+            alt[cnt-1] = height;
+            ms5611SumDat += alt[cnt-1];
+            ms5611CurAlt = ms5611SumDat/5;
+        }
+    
+        num = 100;
+    }
+    num ++;
+
+
+}
+
 
 

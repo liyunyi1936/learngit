@@ -101,6 +101,7 @@ int main(void)
       MS5611_INIT();
       GetPressandTemp();
       MS5611_Calculate_Val();
+      relative_height();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

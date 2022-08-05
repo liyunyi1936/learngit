@@ -27,59 +27,11 @@ Project File Date:  08/01/2022
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 4 (build 422)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'I2C_ms5611'
-compiling flash_onchip_parameter.c...
-..\src\flash\flash_onchip_parameter.c(45): error:  #20: identifier "heater" is undefined
-  	heater *p_heater1;
-..\src\flash\flash_onchip_parameter.c(45): error:  #20: identifier "p_heater1" is undefined
-  	heater *p_heater1;
-..\src\flash\flash_onchip_parameter.c(46): error:  #20: identifier "p_heater2" is undefined
-  	heater *p_heater2;
-..\src\flash\flash_onchip_parameter.c(47): error:  #20: identifier "pow_reboot" is undefined
-  	pow_reboot *p_reboot;
-..\src\flash\flash_onchip_parameter.c(47): error:  #20: identifier "p_reboot" is undefined
-  	pow_reboot *p_reboot;
-..\src\flash\flash_onchip_parameter.c(48): error:  #20: identifier "user_logic_data_st" is undefined
-  	user_logic_data_st *data1;
-..\src\flash\flash_onchip_parameter.c(48): error:  #20: identifier "data1" is undefined
-  	user_logic_data_st *data1;
-..\src\flash\flash_onchip_parameter.c(49): error:  #20: identifier "data2" is undefined
-  	user_logic_data_st *data2;
-..\src\flash\flash_onchip_parameter.c(51): error:  #20: identifier "gp_heater1" is undefined
-  	p_heater1 = gp_heater1;
-..\src\flash\flash_onchip_parameter.c(52): error:  #20: identifier "gp_heater2" is undefined
-  	p_heater2 = gp_heater2;
-..\src\flash\flash_onchip_parameter.c(53): error:  #20: identifier "gp_reboot" is undefined
-  	p_reboot = gp_reboot;
-..\src\flash\flash_onchip_parameter.c(60): warning:  #223-D: function "set_heater1_ctrl_channel" declared implicitly
-  	set_heater1_ctrl_channel(data->temp_ctrl1_ref);
-..\src\flash\flash_onchip_parameter.c(64): warning:  #223-D: function "set_heater2_ctrl_channel" declared implicitly
-  	set_heater2_ctrl_channel(data->temp_ctrl2_ref);
-..\src\flash\flash_onchip_parameter.c(87): error:  #20: identifier "heater" is undefined
-      heater *p_heater1;
-..\src\flash\flash_onchip_parameter.c(87): error:  #20: identifier "p_heater1" is undefined
-      heater *p_heater1;
-..\src\flash\flash_onchip_parameter.c(88): error:  #20: identifier "p_heater2" is undefined
-  	heater *p_heater2;
-..\src\flash\flash_onchip_parameter.c(89): error:  #20: identifier "user_logic_data_st" is undefined
-  	user_logic_data_st *data1;
-..\src\flash\flash_onchip_parameter.c(89): error:  #20: identifier "data1" is undefined
-  	user_logic_data_st *data1;
-..\src\flash\flash_onchip_parameter.c(90): error:  #20: identifier "data2" is undefined
-  	user_logic_data_st *data2;
-..\src\flash\flash_onchip_parameter.c(92): error:  #20: identifier "gp_heater1" is undefined
-  	p_heater1 	= gp_heater1;
-..\src\flash\flash_onchip_parameter.c(93): error:  #20: identifier "gp_heater2" is undefined
-  	p_heater2 	= gp_heater2;
-..\src\flash\flash_onchip_parameter.c(100): warning:  #223-D: function "get_heater1_ctrl_channel" declared implicitly
-  	data->temp_ctrl1_ref 		= get_heater1_ctrl_channel();
-..\src\flash\flash_onchip_parameter.c(104): warning:  #223-D: function "get_heater2_ctrl_channel" declared implicitly
-  	data->temp_ctrl2_ref 		= get_heater2_ctrl_channel();
-..\src\flash\flash_onchip_parameter.c(107): warning:  #223-D: function "get_timestamp" declared implicitly
-      data->last_build_time = get_timestamp();
-..\src\flash\flash_onchip_parameter.c(127): warning:  #223-D: function "get_timestamp" declared implicitly
-          get_build_time_from_flash(data) == get_timestamp()) {
-..\src\flash\flash_onchip_parameter.c: 6 warnings, 19 errors
-"I2C_ms5611\I2C_ms5611.axf" - 19 Error(s), 6 Warning(s).
+compiling main.c...
+linking...
+Program Size: Code=14838 RO-data=634 RW-data=132 ZI-data=1708  
+FromELF: creating hex file...
+"I2C_ms5611\I2C_ms5611.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -97,8 +49,7 @@ Package Vendor: ARM
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.0.1
-Target not created.
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>

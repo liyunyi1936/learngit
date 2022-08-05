@@ -33,3 +33,4 @@ i2c_ms5611\ms5611.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 i2c_ms5611\ms5611.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 i2c_ms5611\ms5611.o: ..\src\ms5611\ms5611.h
 i2c_ms5611\ms5611.o: ../Core/Inc/i2c.h
+i2c_ms5611\ms5611.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
