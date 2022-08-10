@@ -34,7 +34,7 @@ uint8_t channel = MUX_CHANNEL_1;
 float pre_adc_val = 0;            
 float adc_vol ;
 float adc_cal = 0;
-uint32_t resist[6];
+float resist[6];
 float j_real_Temp_value[2];
 float g_real_Temp_value[2];
 
